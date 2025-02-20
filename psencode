@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 \"string to encode\""
+  exit 1
+fi
+
+encoded=$(echo -n "$1" | iconv -t UTF-16LE | base64 -w 0)
+
+echo "Encoded PowerShell string:"
+echo "powershell -nop -enc" $encoded

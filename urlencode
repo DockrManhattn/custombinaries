@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 \"string to encode\""
+  exit 1
+fi
+
+urlencoded=$(echo -n "$1" | jq -s -R -r @uri)
+
+echo "URL Encoded string:"
+echo "$urlencoded"

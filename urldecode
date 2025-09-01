@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 \"urlencoded string\""
+  exit 1
+fi
+
+decoded=$(printf '"%s"' "$1" | jq -r @uri | jq -r .)
+
+echo "URL Decoded string:"
+echo "$decoded"
